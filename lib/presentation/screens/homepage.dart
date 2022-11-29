@@ -1,4 +1,4 @@
-import 'package:riverpod_clean/presentation/riverpod/package_state.dart';
+import 'package:riverpod_clean/presentation/riverpod/package_provider.dart';
 import 'package:riverpod_clean/utils/barrel.dart';
 import 'package:riverpod_clean/presentation/riverpod/package_states.dart';
 
