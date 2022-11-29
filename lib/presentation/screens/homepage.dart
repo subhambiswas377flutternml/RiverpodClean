@@ -9,7 +9,7 @@ class HomeScreen extends ConsumerWidget{
   Widget build(BuildContext context, WidgetRef ref)
   {
     MediaQueryData info = MediaQuery.of(context);
-    final packageDataProvider = ref.watch(packageFutureData);
+    final packageDataProvider = ref.watch(packageProvider);
 
     return Scaffold(
        appBar: AppBar(
@@ -36,7 +36,7 @@ class HomeScreen extends ConsumerWidget{
         actions: [
           IconButton(
             onPressed: (){
-              ref.read(packageFutureData.notifier).searchApi(keyWord: searchController.text.trim());
+              ref.read(packageProvider.notifier).searchApi(keyWord: searchController.text.trim());
             },
             icon: const Icon(Icons.search),
           ),

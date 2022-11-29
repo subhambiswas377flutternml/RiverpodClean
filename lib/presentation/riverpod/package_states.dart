@@ -1,4 +1,4 @@
-import 'package:riverpod_clean/domain/entity/package_model.dart';
+import 'package:riverpod_clean/domain/entity/package_entity.dart';
 
 abstract class PackageState{
 }
@@ -11,6 +11,6 @@ class LoadingState extends PackageState{
 class LoadedState extends PackageState{
   // LoadedState({required List<Package> allPackage}):super(allPackageData: allPackage);
 
-  final List<PackageModel> allPackageData;
+  final List<PackageEntity> allPackageData;
   LoadedState({required this.allPackageData});
 }
