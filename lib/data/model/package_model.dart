@@ -1,22 +1,22 @@
-import 'package:riverpod_clean/domain/entity/package_entity.dart';
+// ignore: depend_on_referenced_packages
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class PackageModel
+
+part "package_model.g.dart";
+part "package_model.freezed.dart";
+
+@freezed
+class PackageModel with _$PackageModel
 {
-  String packageName;
-  String packageDescription;
+  factory PackageModel({required String name, required String description}) = _PackageModel;
 
-  PackageModel({required this.packageDescription, required this.packageName});
+  factory PackageModel.fromJson(Map<String, dynamic> data) => _$PackageModelFromJson(data);
 
-  factory PackageModel.fromJson(Map<String,dynamic> data){
-    return PackageModel(packageName: data["name"], packageDescription: data["description"]);
-  }
-
-  Map<String,dynamic> formJson(){
+  @override
+  Map<String,dynamic> toJson(){
     return {
-      "name":packageName,
-      "description":packageDescription,
+      "name":name,
+      "description":description,
     };
   }
-
-  PackageEntity toEntity()=> PackageEntity(description: packageDescription,name: packageName,);
 }

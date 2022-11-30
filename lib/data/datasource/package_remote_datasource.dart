@@ -3,6 +3,7 @@ import 'dart:convert' as convert;
 
 import 'package:riverpod_clean/data/model/package_model.dart';
 import 'package:riverpod_clean/domain/entity/package_entity.dart';
+import 'package:riverpod_clean/domain/mapper/package_mapper.dart';
 
 class PackageRemoteDatasource
 {
@@ -14,7 +15,7 @@ class PackageRemoteDatasource
     List<PackageEntity> allPackageData = [];
     for(int i=0;i<mapData.length;i++)
     {
-      allPackageData.add(PackageModel.fromJson(mapData[i]["latest"]["pubspec"]).toEntity());
+      allPackageData.add(PackageMapper.toEntity(PackageModel.fromJson(mapData[i]["latest"]["pubspec"])));
     }
     return allPackageData;
     }

@@ -1,14 +1,13 @@
-import 'package:riverpod_clean/data/model/package_model.dart';
+// ignore: depend_on_referenced_packages
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class PackageEntity
+part "package_entity.freezed.dart";
+
+@freezed
+class PackageEntity with _$PackageEntity
 {
-  final String name;
-  final String description;
-
-  const PackageEntity({
-    required this.name,
-    required this.description
-  });
-
-  PackageModel toModel()=> PackageModel(packageDescription: description, packageName: name);
+  factory PackageEntity({
+    required String name,
+    required String description
+  }) = _PackageEntity;
 }

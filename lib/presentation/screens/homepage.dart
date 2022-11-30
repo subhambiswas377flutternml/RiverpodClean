@@ -1,18 +1,40 @@
 import 'package:riverpod_clean/presentation/riverpod/package_provider.dart';
 import 'package:riverpod_clean/utils/barrel.dart';
 import 'package:riverpod_clean/presentation/riverpod/package_states.dart';
+class HomeScreen extends ConsumerStatefulWidget
+{
+  const HomeScreen({Key? key}):super(key: key); 
 
-class HomeScreen extends ConsumerWidget{
-  const HomeScreen({Key? key}):super(key: key);
-  static final TextEditingController searchController = TextEditingController();
   @override
-  Widget build(BuildContext context, WidgetRef ref)
+  ConsumerState<ConsumerStatefulWidget> createState()=>_HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen>{
+
+  late final TextEditingController searchController;
+
+  @override
+  void initState()
+  {
+    super.initState();
+    searchController = TextEditingController();
+  }
+
+  @override
+  void dispose()
+  {
+    super.dispose();
+    searchController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context)
   {
     MediaQueryData info = MediaQuery.of(context);
     final packageDataProvider = ref.watch(packageProvider);
 
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: const Color(0xFF12202F),
         toolbarHeight: info.size.height * 0.1,
         elevation: 0,
